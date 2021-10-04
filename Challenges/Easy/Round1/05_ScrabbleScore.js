@@ -57,9 +57,6 @@ Scrabble.score = function (word){
       }
     });
     return values.reduce((previousValue, currentValue) => previousValue + currentValue);
-  }
-
-// let test = new Scrabble("street");
-// console.log(test.score());
+  };
 
 module.exports = Scrabble;

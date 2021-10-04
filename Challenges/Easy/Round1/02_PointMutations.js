@@ -7,16 +7,16 @@ class DNA {
   
   hammingDistance(otherStrand){
     let newStrand = this.strand;
-    let newOtherStrand = otherStrand;
+    let newComparisonStrand = otherStrand;
     
     if(this.strand.length > otherStrand.length) {
       newStrand = [...this.strand].slice(0, otherStrand.length).join("");
     } else if (this.strand.length < otherStrand.length) {
-      newOtherStrand = [...otherStrand].slice(0, this.strand.length).join("");
+      newComparisonStrand = [...otherStrand].slice(0, this.strand.length).join("");
     }
     
     let differences = [...newStrand].filter((char, idx) => {
-      return char !== newOtherStrand[idx];
+      return char !== newComparisonStrand[idx];
     });
     
     return differences.length;
@@ -24,8 +24,3 @@ class DNA {
 }
 
 module.exports = DNA;
-
-// let dna = new DNA("1234");
-// let other = "152";
-
-// console.log(dna.hammingDistance(other));

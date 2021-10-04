@@ -5,11 +5,18 @@ class Triangle {
     this.sideA = sideA;
     this.sideB = sideB;
     this.sideC = sideC;
-    if(this.sideA === 0 || this.sideB === 0 || this.sideC === 0) {
-      throw new Error;
+    if(this.isInvalid()){
+      throw new Error ("Triangle is invalid");
     }
-    if(Triangle.anyTwoSidesLessThanOne(this.sideA, this.sideB, this.sideC)) {
-      throw new Error;
+  }
+  
+  isInvalid() {
+    if(this.sideA === 0 || this.sideB === 0 || this.sideC === 0) {
+      return true;
+    } else if (Triangle.anyTwoSidesLessThanOne(this.sideA, this.sideB, this.sideC)){
+      return true;
+    } else {
+    return false;
     }
   }
   

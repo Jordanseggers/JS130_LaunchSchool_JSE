@@ -28,7 +28,4 @@ class Anagram {
   }
 }
 
-// let newGram = new Anagram("listen");
-// console.log(newGram.match(['enlists', 'google', 'inlets', 'banana']));
-
 module.exports = Anagram;
