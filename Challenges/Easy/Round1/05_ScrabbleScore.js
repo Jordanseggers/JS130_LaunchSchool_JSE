@@ -1,19 +1,19 @@
 "use strict";
 
 class Scrabble {
-  constructor(value){
+  constructor(value) {
     this.scrabble = value;
   }
-  
-  createScoresObj(){
+
+  createScoresObj() {
     let scores = {};
-  
+
     function assignValues(string, value) {
       string.split("").forEach(letter => {
         scores[letter] = value;
       });
     }
-  
+
     assignValues("AEIOULNRST", 1);
     assignValues("DG", 2);
     assignValues("BCMP", 3);
@@ -21,19 +21,18 @@ class Scrabble {
     assignValues("K", 5);
     assignValues("JX", 8);
     assignValues("QZ", 10);
-  
+
     return scores;
   }
-  
-    
-  score(optionalValue){
+
+  score() {
     let scrabbleWord = this.scrabble;
     let key = this.createScoresObj();
-    if (scrabbleWord === null || scrabbleWord === undefined || scrabbleWord.match(/^\s*$/)){
+    if (scrabbleWord === null || scrabbleWord === undefined || scrabbleWord.match(/^\s*$/)) {
       return 0;
     }
     let values = scrabbleWord.toUpperCase().split("").map(letter => {
-      if(key[letter]){
+      if (key[letter]) {
         return key[letter];
       } else {
         return 0;
@@ -43,20 +42,20 @@ class Scrabble {
   }
 }
 
-Scrabble.score = function (word){
-    let scrabbleWord = word;
-    let key = Scrabble.prototype.createScoresObj();
-    if (scrabbleWord === null || scrabbleWord === undefined || scrabbleWord.match(/^\s*$/)){
+Scrabble.score = function (word) {
+  let scrabbleWord = word;
+  let key = Scrabble.prototype.createScoresObj();
+  if (scrabbleWord === null || scrabbleWord === undefined || scrabbleWord.match(/^\s*$/)) {
+    return 0;
+  }
+  let values = scrabbleWord.toUpperCase().split("").map(letter => {
+    if (key[letter]) {
+      return key[letter];
+    } else {
       return 0;
     }
-    let values = scrabbleWord.toUpperCase().split("").map(letter => {
-      if(key[letter]){
-        return key[letter];
-      } else {
-        return 0;
-      }
-    });
-    return values.reduce((previousValue, currentValue) => previousValue + currentValue);
-  };
+  });
+  return values.reduce((previousValue, currentValue) => previousValue + currentValue);
+};
 
 module.exports = Scrabble;

@@ -1,37 +1,32 @@
 "use strict";
 
 class SumOfMultiples {
-  constructor(...multiples){
+  constructor(...multiples) {
     this.multiples = multiples;
   }
-  
-  to (naturalNum){
+
+  to (naturalNum) {
     return SumOfMultiples.to(naturalNum, this.multiples);
   }
 }
 
-SumOfMultiples.to = function(naturalNum, mult){
+SumOfMultiples.to = function(naturalNum, mult) {
   let collectiveMultiples = [0];
   let multiples;
-  if(mult) {
+  if (mult) {
     multiples = mult;
   } else {
     multiples = [3, 5];
   }
   multiples.forEach(multiple => {
-    for(let i = multiple; i < naturalNum; i+= multiple){
-      if(!collectiveMultiples.includes(i)){
-        collectiveMultiples.push(i);
+    for (let idx = multiple; idx < naturalNum; idx += multiple) {
+      if (!collectiveMultiples.includes(idx)) {
+        collectiveMultiples.push(idx);
       }
     }
   });
   let sum = collectiveMultiples.reduce((prev, curr) => prev + curr);
   return sum;
 };
-
-
-
-let obj = new SumOfMultiples(5, 6, 8);
-console.log(obj.to(150));
 
 module.exports = SumOfMultiples;
